@@ -25,7 +25,6 @@ a{color:inherit}
 .main-nav{display:flex;gap:24px;margin-left:auto}
 .main-nav a{text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.08em;
   text-transform:uppercase;padding:8px 0}
-.main-nav a:hover{color:var(--gold-deep)}
 .nav-toggle{display:none;background:none;border:1px solid var(--ink);width:48px;height:48px;
   font-size:20px;cursor:pointer}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;
@@ -144,10 +143,20 @@ h2{font-weight:900;font-size:clamp(24px,3.6vw,34px);line-height:1.15;margin-bott
   .town-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:860px){
-  .main-nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--paper);
-    flex-direction:column;padding:16px 24px 24px;border-bottom:1px solid var(--ink);gap:8px}
-  .main-nav.open{display:flex}
-  .main-nav a{min-height:48px;display:flex;align-items:center}
+  .main-nav{display:flex;position:fixed;inset:0;z-index:80;background:var(--field);
+    color:var(--paper);flex-direction:column;justify-content:center;margin-left:0;
+    padding:104px 32px 48px;gap:0;counter-reset:nav;
+    visibility:hidden;opacity:0;transition:opacity .25s ease,visibility .25s}
+  .main-nav.open{visibility:visible;opacity:1}
+  .main-nav>a{font-size:clamp(25px,6.8vw,32px);font-weight:900;letter-spacing:.03em;
+    padding:13px 0;border-bottom:1px solid #2b2b2b;display:flex;align-items:baseline;
+    gap:18px;min-height:0;counter-increment:nav}
+  .main-nav>a::before{content:counter(nav,decimal-leading-zero);font-size:13px;
+    font-weight:700;letter-spacing:.2em;color:#8f8f8f}
+  .main-nav>a::after{display:none}
+  .main-nav .nav-foot{display:block;margin-top:30px}
+  .nav-actions{display:flex;gap:12px;flex-wrap:wrap}
+  .nav-actions .btn{flex:1;min-width:150px}
   .nav-toggle{display:block;margin-left:auto}
   .header-call{display:none}
   .mobile-callbar{display:flex;gap:6px;position:fixed;left:0;right:0;bottom:0;z-index:60;
@@ -180,6 +189,71 @@ h2{font-weight:900;font-size:clamp(24px,3.6vw,34px);line-height:1.15;margin-bott
   .footer-nav{gap:16px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ===== Phase C — navigation system, form structure, text button, type scale ===== */
+.main-nav>a{position:relative;transition:color .18s ease}
+.main-nav>a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;
+  background:var(--ink);transform:scaleX(0);transform-origin:left center;transition:transform .25s ease}
+.main-nav>a:hover::after{transform:scaleX(1)}
+.nav-foot{display:none}
+.nav-foot .level-rule{margin:0 0 22px;width:min(300px,72%)}
+.nav-note{color:#c9c9c9;font-size:14px;margin-bottom:20px}
+body.menu-open{overflow:hidden}
+body.menu-open .nav-toggle{position:relative;z-index:90;color:var(--paper);border-color:var(--paper)}
+body.menu-open .mobile-callbar{display:none}
+.text-fab{position:fixed;right:24px;bottom:24px;z-index:40;display:none;align-items:center;
+  background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;font-size:15px;
+  padding:14px 22px;border:1px solid var(--paper);border-radius:999px;
+  box-shadow:0 8px 24px rgba(0,0,0,.28);letter-spacing:.02em}
+@media (min-width:861px){.text-fab{display:inline-flex}}
+
+/* form structure */
+#svc-form{border:1px solid var(--ink);background:var(--paper)}
+.form-head{background:var(--ink);color:var(--paper);padding:22px 28px}
+.form-head .form-progress{margin:0 0 14px;color:var(--paper)}
+.progress-track{height:3px;background:#3a3a3a;position:relative}
+.progress-fill{position:absolute;left:0;top:0;bottom:0;background:var(--paper);width:33.333%;
+  transition:width .35s ease}
+.progress-fill::after{content:"";position:absolute;right:-6px;top:50%;width:11px;height:11px;
+  border-radius:50%;background:var(--paper);transform:translateY(-50%)}
+.form-body{padding:32px 28px 36px}
+.form-step h2{margin-bottom:24px}
+.svc-cards{counter-reset:card}
+.svc-card{counter-increment:card;display:flex;align-items:center;gap:14px;min-height:72px;
+  transition:background-color .15s ease,color .15s ease}
+.svc-card::before{content:counter(card,decimal-leading-zero);font-size:12px;font-weight:700;
+  letter-spacing:.18em;color:#8f8f8f;flex:none}
+.svc-card[aria-pressed="true"]::before{color:#c9c9c9}
+.radio-group label{transition:background-color .15s ease,color .15s ease}
+.radio-group label:has(input:checked){background:var(--ink);color:var(--paper)}
+.radio-group label:has(input:checked) input{accent-color:var(--paper)}
+#svc-form input[type="text"]:focus,#svc-form input[type="tel"]:focus,
+#svc-form select:focus,#svc-form textarea:focus{outline:2px solid var(--ink);outline-offset:1px}
+#svc-form input[type="file"]{display:block;width:100%;margin-top:8px;padding:16px;
+  border:1px dashed var(--ink);background:var(--paper);font:inherit}
+.form-step:not([hidden]){animation:form-in .3s ease both}
+@keyframes form-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.rule-panel{border-left:6px solid var(--gold-deep);padding:20px 24px}
+.summary{background:var(--paper)}
+.text-band .btn{margin-top:8px}
+
+/* type scale — phone width (the call-driving phone number stays large on purpose) */
+@media (max-width:560px){
+  body{font-size:16px}
+  h1{font-size:27px}
+  h2{font-size:22px}
+  .lede{font-size:17px}
+  .big-line{font-size:19px}
+  .town-grid{font-size:17px}
+  .rate-name,.rate-price{font-size:18px}
+  .step span{font-size:24px}
+  .form-head{padding:18px}
+  .form-body{padding:24px 18px 28px}
+  .form-progress{font-size:12px}
+  .page-head--photo{padding:56px 0 44px}
+  .nav-actions{flex-direction:column}
+  .nav-actions .btn{width:100%}
+}
 
 /* ENRICH */
 .ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}

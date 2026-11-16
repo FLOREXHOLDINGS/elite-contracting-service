@@ -7,12 +7,12 @@
   if (!form) return;
 
   var RULES = {
-    wildlife: '<strong>The inspection rule.</strong> $149 when the animal is confirmed inside the structure or burrowing under one. Not confirmed, the call goes straight to a removal period — no inspection fee. Chipmunks confirmed inside the house: inspection free.',
-    rodent: '<strong>Paid inspection first.</strong> Every rodent call starts with one; the amount is set when it\'s booked. Removal is priced at the inspection, never over the phone. No poison is used — ever.',
-    bat: '<strong>One bat, residential: $349</strong>, paid before scheduling. If the bat is gone when we arrive, the $349 stands — it pays for the trip and the search. More than one bat, or signs of a colony, is priced by free estimate.',
+    wildlife: '<strong>The inspection rule.</strong> $189 when the animal is confirmed inside the structure or burrowing under one. Not confirmed, the call goes straight to a removal period — no inspection fee. Squirrels and chipmunks inside the house: inspection free; seen only outside: $189. College housing, rentals, and commercial: $189.',
+    rodent: '<strong>The inspection is free for homeowners.</strong> College housing, rental properties, and commercial properties are charged $189. Removal is priced at the inspection, never over the phone. No poison is used — ever.',
+    bat: '<strong>One bat, residential: $349</strong>, paid before scheduling. If the bat is gone when we arrive, the $349 stands — it pays for the trip and the search. The check for more bats — attic and the rest of the house — is a free inspection. More than one bat, or signs of a colony, is priced by free estimate.',
     dead: '<strong>Paid before scheduling.</strong> Small $489 / medium $649 / large $889. Worse than described when we arrive: full refund and no job, or an added charge agreed on site before work starts.',
     bird: '<strong>Photos first.</strong> No vent job is scheduled until the three photos are in: the vent close up, a wide shot showing the height, and the ground and access below. Tiers: $349 no ladder / $449 one story / $549 above. Paid before scheduling.',
-    insulation: '<strong>Priced by free estimate</strong> — in person, after the look. One number for the whole job.',
+    insulation: '<strong>Insulation inspection: $189</strong> — charged on every insulation call, without exception. The work is priced at the inspection. One number for the whole job.',
     exclusion: '<strong>Priced by free estimate</strong> — in person, after the look. The work is photographed before, during, and after.',
     repairs: '<strong>Priced by free estimate</strong> — in person, after the look. Minor plumbing and electrical only; nothing major that requires a license.',
     cleaning: '<strong>$74.75 per cleaner per hour.</strong> Minimum $224.25 a visit; deep and one-time minimum $448.50. Elite brings all supplies and equipment. Cleaning covers Yates, Ontario, Schuyler, and Steuben counties.',
@@ -20,16 +20,19 @@
   };
   var NEXT = {
     wildlife: 'What happens next: we call you back, set the inspection or the removal period per the rule above, and give you the number plainly.',
-    rodent: 'What happens next: we call you back and book the paid inspection. The removal price is set at that inspection — never over the phone.',
+    rodent: 'What happens next: we call you back and book the inspection — free for homeowners. The removal price is set at that inspection — never over the phone.',
     bat: 'What happens next: we call you back to schedule. The $349 is paid before scheduling.',
     dead: 'What happens next: we call you back to schedule. The price for the size you picked is paid before scheduling.',
     bird: 'What happens next: we look at your three photos, confirm the tier, and call you back to schedule. Payment comes before scheduling.',
-    insulation: 'What happens next: we call you back and set a free estimate visit.',
+    insulation: 'What happens next: we call you back and set the $189 inspection visit.',
     exclusion: 'What happens next: we call you back and set a free estimate visit.',
     repairs: 'What happens next: we call you back and set a free estimate visit.',
     cleaning: 'What happens next: we call you back, confirm the crew size and the time, and give you the number.',
     additions: 'What happens next: we call you back and set a free estimate visit.'
   };
+
+  var STEP_NAMES = { '1': 'The service', '2': 'The job', '3': 'Your details', 'done': 'Ready to send' };
+  var STEP_FILL = { '1': '33.333%', '2': '66.666%', '3': '100%', 'done': '100%' };
 
   function radio(name, legend, options) {
     var h = '<fieldset class="radio-group"><legend>' + legend + '</legend>';
@@ -121,7 +124,11 @@
     steps.forEach(function (st) {
       st.hidden = st.getAttribute('data-step') !== String(n);
     });
-    progress.textContent = n === 'done' ? 'Done' : 'Step ' + n + ' of 3';
+    progress.innerHTML = n === 'done'
+      ? 'Request ready &middot; Send it'
+      : 'Step ' + n + ' of 3 &middot; ' + STEP_NAMES[n];
+    var fill = document.getElementById('progress-fill');
+    if (fill) fill.style.width = STEP_FILL[n];
     window.scrollTo({ top: form.offsetTop - 96, behavior: 'smooth' });
   }
 
