@@ -7,8 +7,8 @@
   if (!form) return;
 
   var RULES = {
-    wildlife: '<strong>The inspection rule.</strong> $189 when the animal is confirmed inside the structure or burrowing under one. Not confirmed, the call goes straight to a removal period — no inspection fee. Squirrels and chipmunks inside the house: inspection free; seen only outside: $189. College housing, rentals, and commercial: $189.',
-    rodent: '<strong>The inspection is free for homeowners.</strong> College housing, rental properties, and commercial properties are charged $189. Removal is priced at the inspection, never over the phone. No poison is used — ever.',
+    wildlife: '<strong>The inspection rule.</strong> $189 when the animal is confirmed inside the structure or burrowing under one. Not confirmed, the call goes straight to a removal period — no inspection fee. Squirrels and chipmunks inside the house: inspection free; seen only outside: $189. College housing and rentals: $189; commercial: $245.70.',
+    rodent: '<strong>The inspection is free for homeowners.</strong> College housing and rental properties are charged $189; commercial properties are charged $245.70. Removal is priced at the inspection, never over the phone. No poison is used — ever.',
     bat: '<strong>One bat, residential: $349</strong>, paid before scheduling. If the bat is gone when we arrive, the $349 stands — it pays for the trip and the search. The check for more bats — attic and the rest of the house — is a free inspection. More than one bat, or signs of a colony, is priced by free estimate.',
     dead: '<strong>Paid before scheduling.</strong> Small $489 / medium $649 / large $889. Worse than described when we arrive: full refund and no job, or an added charge agreed on site before work starts.',
     bird: '<strong>Photos first.</strong> No vent job is scheduled until the three photos are in: the vent close up, a wide shot showing the height, and the ground and access below. Tiers: $349 no ladder / $449 one story / $549 above. Paid before scheduling.',
