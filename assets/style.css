@@ -150,17 +150,33 @@ h2{font-weight:900;font-size:clamp(24px,3.6vw,34px);line-height:1.15;margin-bott
   .main-nav a{min-height:48px;display:flex;align-items:center}
   .nav-toggle{display:block;margin-left:auto}
   .header-call{display:none}
-  .mobile-callbar{display:flex;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;
-    background:var(--field);padding:8px;--icon-cut:#121212}
-  .mobile-callbar .btn{flex:1}
-  body{padding-bottom:72px}
+  .mobile-callbar{display:flex;gap:6px;position:fixed;left:0;right:0;bottom:0;z-index:60;
+    background:var(--field);padding:6px;--icon-cut:#121212}
+  .mobile-callbar .btn{flex:1;min-height:44px;padding:8px 4px;font-size:14px;
+    white-space:nowrap;letter-spacing:0}
+  body{padding-bottom:60px}
+  .brand-text{font-size:15px}
+  .logo-icon{width:48px;height:30px}
+  .nav-toggle{width:44px;height:44px}
   .svc-cards{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   .steps{grid-template-columns:1fr}
   .rate-row{grid-template-columns:1fr}
   .rate-price{text-align:left}
-  .section{padding:48px 0}
-  .hero{padding:48px 0 40px}
+  .section{padding:40px 0}
+  .hero{padding:40px 0 24px}
+  .logo-full{width:min(500px,94vw)}
+  .site-footer{padding:40px 0 84px}
+  .site-footer .logo-full{width:min(360px,84vw)}
+  .hero-sub{font-size:24px;margin-top:24px}
+  .hero-cta .btn{width:100%}
+  .svc-row{padding:16px 4px;gap:16px}
+  .svc-body strong{font-size:18px}
+  .svc-num{font-size:17px;min-width:34px}
+  .close-phone{font-size:30px}
+  .page-head{padding:40px 0 0}
+  .panel{padding:24px}
+  .footer-nav{gap:16px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

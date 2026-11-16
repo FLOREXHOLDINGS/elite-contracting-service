@@ -87,25 +87,35 @@
 
   var chosen = null;
   var cards = document.getElementById('svc-cards');
+  var pickService = function () {}; // replaced after cards are built
   var steps = form.querySelectorAll('.form-step');
   var progress = document.getElementById('form-progress');
 
+  var cardBtns = {};
   SERVICES.forEach(function (s) {
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'svc-card'; b.textContent = s.name;
     b.setAttribute('aria-pressed', 'false');
-    b.addEventListener('click', function () {
-      chosen = s;
-      cards.querySelectorAll('.svc-card').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
-      b.setAttribute('aria-pressed', 'true');
-      document.getElementById('step2-title').textContent = s.name + ' — about the job';
-      var rp = document.getElementById('rule-panel');
-      rp.innerHTML = RULES[s.id]; rp.hidden = false;
-      document.getElementById('step2-fields').innerHTML = s.fields();
-      goTo(2);
-    });
+    b.addEventListener('click', function () { selectService(s, true); });
     cards.appendChild(b);
+    cardBtns[s.id] = b;
   });
+  function selectService(s, advance) {
+    chosen = s;
+    cards.querySelectorAll('.svc-card').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+    cardBtns[s.id].setAttribute('aria-pressed', 'true');
+    document.getElementById('step2-title').textContent = s.name + ' — about the job';
+    var rp = document.getElementById('rule-panel');
+    rp.innerHTML = RULES[s.id]; rp.hidden = false;
+    document.getElementById('step2-fields').innerHTML = s.fields();
+    if (advance) goTo(2);
+  }
+  // Arriving from a service or city page: contact.html?service=wildlife preselects it.
+  var pre = new URLSearchParams(window.location.search).get('service');
+  if (pre) {
+    var match = SERVICES.filter(function (s) { return s.id === pre; })[0];
+    if (match) selectService(match, true);
+  }
 
   function goTo(n) {
     steps.forEach(function (st) {

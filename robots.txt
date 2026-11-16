@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://florexholdings.github.io/elite-contracting-service/sitemap.xml
