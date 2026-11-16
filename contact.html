@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Contracting Service — Contact</title>
+<meta name="description" content="Contact Elite Contracting Service: call or text (315) 540-0137, or request service with the form — it asks the questions for the service you pick.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Elite Contracting Service — home">
+    <svg class="logo-icon" viewBox="0 0 300 190" aria-hidden="true">
+<rect x="5" y="72" width="290" height="46" rx="6" fill="currentColor"/>
+<rect x="52" y="86" width="62" height="18" rx="9" fill="var(--icon-cut,#fff)"/>
+<rect x="186" y="86" width="62" height="18" rx="9" fill="var(--icon-cut,#fff)"/>
+<circle cx="150" cy="95" r="52" fill="var(--icon-cut,#fff)" stroke="currentColor" stroke-width="9"/>
+<rect x="138" y="58" width="24" height="74" rx="12" fill="none" stroke="currentColor" stroke-width="6"/>
+<rect x="141" y="76" width="18" height="38" rx="7" fill="currentColor"/>
+<line x1="132" y1="76" x2="168" y2="76" stroke="currentColor" stroke-width="4"/>
+<line x1="132" y1="114" x2="168" y2="114" stroke="currentColor" stroke-width="4"/></svg>
+    <span class="brand-text">ELITE CONTRACTING <em>SERVICE</em></span>
+  </a>
+  <nav class="main-nav" aria-label="Main">
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="service-area.html">Service Area</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="btn btn-gold header-call" href="tel:+13155400137">Call (315) 540-0137</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+</header>
+<div class="mobile-callbar">
+  <a class="btn btn-gold" href="tel:+13155400137">Call (315) 540-0137</a>
+  <a class="btn btn-outline" href="sms:+13155400137">Text a photo</a>
+</div><main>
+<section class="page-head"><div class="wrap">
+  <p class="eyebrow">Contact</p>
+  <h1>Start with the service.</h1>
+  <p class="lede">Call <a href="tel:+13155400137">(315) 540-0137</a>, text a photo of what you're seeing,
+  or use the form — it asks the questions for the service you pick, and only those.</p>
+</div></section>
+<section class="section"><div class="wrap narrow">
+  <form id="svc-form" novalidate>
+    <p class="form-progress" id="form-progress">Step 1 of 3</p>
+    <div class="form-step" data-step="1">
+      <h2>What do you need?</h2>
+      <div class="svc-cards" id="svc-cards"></div>
+    </div>
+    <div class="form-step" data-step="2" hidden>
+      <h2 id="step2-title">About the job</h2>
+      <div class="rule-panel" id="rule-panel" hidden></div>
+      <div id="step2-fields"></div>
+      <p class="form-nav"><button type="button" class="btn btn-outline-dark" data-back>Back</button>
+      <button type="button" class="btn btn-dark" data-next>Continue</button></p>
+    </div>
+    <div class="form-step" data-step="3" hidden>
+      <h2>How do we reach you?</h2>
+      <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+      <label>Phone<input type="tel" name="phone" autocomplete="tel" required></label>
+      <label>Town<input type="text" name="town" required></label>
+      <label>Best time to reach you
+        <select name="besttime"><option>Morning</option><option>Midday</option>
+        <option>Afternoon</option><option>Evening</option></select></label>
+      <p class="area-warning" id="area-warning" hidden></p>
+      <p class="form-nav"><button type="button" class="btn btn-outline-dark" data-back>Back</button>
+      <button type="submit" class="btn btn-gold">Send request</button></p>
+    </div>
+    <div class="form-step" data-step="done" hidden>
+      <h2>Here's your request.</h2>
+      <p id="done-next"></p>
+      <pre class="summary" id="summary"></pre>
+      <p class="form-nav">
+        <a class="btn btn-gold" id="send-text" href="#">Text it to us</a>
+        <a class="btn btn-dark" href="tel:+13155400137">Call (315) 540-0137</a>
+      </p>
+      <p class="note">Texting opens your own messages app with the request written out — you send it, and it's in front of us.</p>
+    </div>
+  </form>
+</div></section>
+<script src="assets/form.js"></script></main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <svg class="logo-full" viewBox="0 0 3000 1135" role="img" aria-label="Elite Contracting Service — Always on the level"><text x="1502" y="328" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="221" letter-spacing="-4" fill="#FFFFFF">ELITE CONTRACTING</text>
+<text x="1351" y="498" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="148" letter-spacing="298" fill="#FFFFFF">SERVICE</text>
+<rect x="250" y="627" width="2500" height="134" rx="14" fill="#FFFFFF"/>
+<rect x="615" y="665" width="520" height="58" rx="28" fill="#121212"/>
+<rect x="1865" y="665" width="520" height="58" rx="28" fill="#121212"/>
+<circle cx="398" cy="694" r="35" fill="#121212" stroke="#FFFFFF" stroke-width="8"/>
+<rect x="390.5" y="675" width="15" height="38" rx="7.5" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+<circle cx="398" cy="694" r="6" fill="#FFFFFF"/>
+<circle cx="2602" cy="694" r="35" fill="#121212" stroke="#FFFFFF" stroke-width="8"/>
+<rect x="2594.5" y="675" width="15" height="38" rx="7.5" fill="none" stroke="#FFFFFF" stroke-width="5"/>
+<circle cx="2602" cy="694" r="6" fill="#FFFFFF"/>
+<circle cx="1500" cy="694" r="132" fill="#121212" stroke="#FFFFFF" stroke-width="16"/>
+<circle cx="1500" cy="694" r="109" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+<rect x="1463" y="609" width="74" height="170" rx="37" fill="none" stroke="#FFFFFF" stroke-width="11"/>
+<rect x="1472" y="652" width="56" height="84" rx="20" fill="#FFFFFF"/>
+<line x1="1455" y1="652" x2="1545" y2="652" stroke="#FFFFFF" stroke-width="7"/>
+<line x1="1455" y1="736" x2="1545" y2="736" stroke="#FFFFFF" stroke-width="7"/>
+<text x="1474" y="965" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="700" font-size="104" letter-spacing="51" word-spacing="82" fill="#FFFFFF">ALWAYS ON THE LEVEL</text></svg>
+    <p class="footer-line">Family owned. Family run. &middot; Licensed and insured. &middot; (315) 540-0137</p>
+    <p class="footer-area">North to Lake Ontario and Oswego, Syracuse, I-81 to Binghamton, Route 86 to Olean.</p>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="services.html">Services</a><a href="pricing.html">Pricing</a>
+      <a href="service-area.html">Service Area</a><a href="about.html">About</a>
+      <a href="contact.html">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
